@@ -14,7 +14,9 @@ const ProductDetail = (props) => {
 
   return (
     <DetailWrapper>
-      <p onClick={props.selectProduct}>Back to Products</p>
+      <Link to="/products">
+        <p onClick={props.selectProduct}>Back to Products</p>
+      </Link>
       <h1>{product.name}</h1>
       <img src={product.image} alt={product.name} />
       <p>{product.description}</p>
