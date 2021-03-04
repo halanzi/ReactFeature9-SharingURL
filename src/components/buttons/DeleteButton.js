@@ -1,9 +1,14 @@
 // Styling
 import { DeleteButtonStyled } from "../../styles";
 
+// States
+import productStore from "../../stores/productStore";
+
 const DeleteButton = (props) => {
   return (
-    <DeleteButtonStyled onClick={() => props.deleteProduct(props.productId)}>
+    <DeleteButtonStyled
+      onClick={() => productStore.deleteProduct(props.productId)}
+    >
       Delete
     </DeleteButtonStyled>
   );

@@ -6,7 +6,7 @@ const NavBar = (props) => {
   return (
     <nav className="navbar navbar-expand">
       <Link to="/">
-        <h4 className="navbar-brand">MyLogo</h4>
+        <h4 className="navbar-brand">My Logo</h4>
       </Link>
       <div className="navbar-nav ml-auto">
         <Link

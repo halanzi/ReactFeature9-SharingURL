@@ -8,9 +8,9 @@ import {
 } from "./styles";
 import React, { useState } from "react";
 
+// Components
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
-// Components
 import ProductDetail from "./components/ProductDetail";
 import ProductList from "./components/ProductList";
 import { ThemeProvider } from "styled-components";
@@ -37,15 +37,6 @@ const theme = {
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
   const [product, setProduct] = useState(null);
-  const [_products, setProducts] = useState(products);
-
-  const deleteProduct = (productId) => {
-    const updatedProducts = _products.filter(
-      (product) => product.id !== +productId
-    );
-    setProducts(updatedProducts);
-    setProduct(null);
-  };
 
   const selectProduct = (productId) => {
     const selectedProduct = products.find(
@@ -57,36 +48,17 @@ function App() {
   const toggleTheme = () =>
     setCurrentTheme(currentTheme === "light" ? "dark" : "light");
 
-  // const setView = () =>
-  //   product ? (
-  //     <ProductDetail
-  //       product={product}
-  //       deleteProduct={deleteProduct}
-  //       selectProduct={selectProduct}
-  //     />
-  //   ) : (
-
-  //   );
-
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
       <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
       <Switch>
         <Route exact path="/products/:productId">
-          <ProductDetail
-            product={_products}
-            deleteProduct={deleteProduct}
-            selectProduct={selectProduct}
-          />
+          <ProductDetail selectProduct={selectProduct} />
         </Route>
 
         <Route exact path="/products">
-          <ProductList
-            products={_products}
-            deleteProduct={deleteProduct}
-            selectProduct={selectProduct}
-          />
+          <ProductList selectProduct={selectProduct} />
         </Route>
 
         <Route exact path="/">
