@@ -16,8 +16,9 @@ import ProductList from "./components/ProductList";
 import { ThemeProvider } from "styled-components";
 import { Route, Switch } from "react-router";
 import { Link } from "react-router-dom";
-// Data
-import products from "./products";
+
+// Store
+import productStore from "./stores/productStore";
 
 const theme = {
   light: {
@@ -39,7 +40,7 @@ function App() {
   const [product, setProduct] = useState(null);
 
   const selectProduct = (productId) => {
-    const selectedProduct = products.find(
+    const selectedProduct = productStore.products.find(
       (product) => product.id === productId
     );
     setProduct(selectedProduct);
